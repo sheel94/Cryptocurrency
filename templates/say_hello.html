@@ -1,0 +1,145 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Crypto/styles.css' %}" />
+    <script>
+
+    </script>
+</head>
+<body>
+{#    {% block nav %}#}
+{#        <ul id="nav">#}
+{#            <li>{% block nav-rating %}<a href="{% url 'blog' "ethereum" %}">Rating</a>{% endblock %}</li>#}
+{#            <li>{% block nav-correlation %}<a href="{% url 'blog' "ethereum" %}">Correlation</a>{% endblock %}</li>#}
+{#            <li>{% block nav-outliers %}<a href="{% url 'blog' "ethereum" %}">Outliers</a>{% endblock %}</li>#}
+{#            <li>{% block nav-hotnew %}<a href="{% url 'blog' "ethereum" %}">Hot & New</a>{% endblock %}</li>#}
+{#        </ul>#}
+{#    {% endblock %}#}
+
+
+    <div id="div1">
+  <!--for demo wrap-->
+  <h1>
+        <div>&lt;Crypto&gt;</div><div>
+        <span>Rating</span>
+        </div>
+  </h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Currency</th>
+          <th>Price ($)</th>
+          <th>Price Chart 7d</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+            {% for curr in topcurr %}
+            <tr>
+                <td><a href="{% url 'blog' curr.0 %}">{{ curr.0}}</a></td>
+                {# </a> #}
+                <td>{{ curr.1 }}</td>
+                <td><img class="effectscale" src="https://i2.wp.com/institut-mittelstand.com/wp-content/uploads/2017/12/bitcoin-rise-graphicon-graph-bitcoin.png?fit=615%2C230&ssl=1" alt="" height=30 width=100></td>
+            </tr>
+            {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+    </div>
+
+    <div id="div2">
+        <h1>
+            <div>&lt;Crypto&gt;</div><div>
+            <span>Correlation</span>
+            </div>
+        </h1>
+        {% if btcgraph %}
+        {{ btcgraph|safe }}
+        {% endif %}
+    </div>
+
+    <div id="div3">
+        <h1>
+            <div>&lt;Crypto&gt;</div><div>
+            <span> Outliers</span>
+            </div>
+        </h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Price ($)</th>
+              <th>Price chart comparison</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for curr in currs_less %}
+            <tr>
+                <td><a href="{% url 'blog' curr.currency_name %}">{{ curr.currency_name }}</a></td>
+                <td>{{ curr.quote }}</td>
+                <td><img class="effectscale" src="https://i2.wp.com/institut-mittelstand.com/wp-content/uploads/2017/12/bitcoin-rise-graphicon-graph-bitcoin.png?fit=615%2C230&ssl=1" alt="" height=30 width=100></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+    </div>
+
+    <div id="div4">
+        <h1>
+            <div>&lt;Crypto&gt;</div><div>
+            <span>Hot & New</span>
+            </div>
+        </h1>
+        <div class="promos">
+        <div class="promo">
+          <div class="deal">
+            <span>2bacco</span>
+
+          </div>
+          <span class="price">$79</span>
+          <ul class="features">
+            <li>Some great feature</li>
+            <li>Another super feature</li>
+            <li>And more...</li>
+          </ul>
+            <button><a href="{% url 'blog' "2bacco" %}">Read more</a></button>
+        </div>
+        <div class="promo scale">
+          <div class="deal">
+            <span>Ethereum</span>
+
+          </div>
+          <span class="price">$89</span>
+          <ul class="features">
+            <li>Some great feature</li>
+            <li>Another super feature</li>
+            <li>And more...</li>
+          </ul>
+          <button><a href="{% url 'blog' "ethereum" %}">Read more</a></button>
+        </div>
+        <div class="promo">
+          <div class="deal">
+            <span>SolarCoin</span>
+
+          </div>
+          <span class="price">$69</span>
+          <ul class="features">
+            <li>Choose the one on the left</li>
+            <li>We need moneyy</li>
+            <li>And more...</li>
+          </ul>
+          <button><a href="{% url 'blog' "solarcoin" %}">Read more</a></button>
+        </div>
+        </div>
+
+        </div>
+    </div>
+</body>
+</html>

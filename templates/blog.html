@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>{{currency}}</h1>
+
+
+<h3>Latest News on {{currency}}</h3>
+<br>
+
+<table>
+    {% for article in articles %}
+      <tr>
+          <a href="{{article.link}}">{{ article.title }}</>
+      </tr><br><br>
+    {% endfor %}
+</table>
+
+</body>
+</html>
