@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'Crypto/styles.css' %}" />
+        <script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+        <script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
+
+<div class="left">
 <h1>{{currency}}</h1>
-
-
-<h3>Latest News on {{currency}}</h3>
+<h3><div style="margin-top: 10px">Latest News on {{currency}}</div></h3>
 <br>
-
+<div id="div3">
 <table>
     {% for article in articles %}
       <tr>
-          <a href="{{article.link}}">{{ article.title }}</>
-      </tr><br><br>
+          <td><a href="{{article.link}}">{{ article.title }}</a></td>
+      </tr>
     {% endfor %}
 </table>
+</div>
 
+</div>
+
+<div class="right" >
+    <h3><div style="margin-top: 10px">{{currency}} Price Graph</div></h3>
+     <div id="chart-1" style="display: inline-block; margin-top: 10px">
+        {{ graph|safe }}
+     </div>
+</div>
 </body>
 </html>
